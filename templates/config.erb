@@ -53,7 +53,7 @@ PID="<%= @pid %>"
 <% end -%>
 <% if @sqlsysadminaccounts %>
 ; Windows account(s) to provision as SQL Server system administrators.
-SQLSYSADMINACCOUNTS="<%= `powershell write-host $env:userdomain -nonewline` %>\<%= @sqlsysadminaccounts %>"
+SQLSYSADMINACCOUNTS="<%= @sqlsysadminaccounts %>"
 <% end -%>
 
 ADDCURRENTUSERASSQLADMIN="<%= @addcurrentuserassqladmin %>"
@@ -95,21 +95,21 @@ SQLUSERDBLOGDIR="<%= @sqluserdblogdir %>"
 
 <% if !@agtsvcaccount.empty? %>
 ; Information for SQL Agent
-AGTSVCACCOUNT="<%= `powershell write-host $env:userdomain -nonewline` %>\<%= @agtsvcaccount %>"
+AGTSVCACCOUNT="<%= @agtsvcaccount %>"
 AGTSVCPASSWORD="<%= @agtpwd %>"
 AGTSVCSTARTUPTYPE="<%= @agtsvcstartuptype %>"
 <% end %>
 
 <% if !@sqlsvcaccount.empty? %>
 ; Information for SQL Server service.
-SQLSVCACCOUNT="<%= `powershell write-host $env:userdomain -nonewline` %>\<%= @sqlsvcaccount %>"
+SQLSVCACCOUNT="<%= @sqlsvcaccount %>"
 SQLSVCPASSWORD="<%= @sqlpwd %>"
 SQLSVCSTARTUPTYPE="<%= @sqlsvcstartuptype %>"
 <% end %>
 
 <% if !@rssvcaccount.empty? %>
 ; Information for Reporting Services
-RSSVCACCOUNT="<%= `powershell write-host $env:userdomain -nonewline` %>\<%= @rssvcaccount %>"
+RSSVCACCOUNT="<%= @rssvcaccount %>"
 RSSVCPASSWORD="<%= @rspwd %>"
 RSSVCSTARTUPTYPE="<%= @rssvcstartuptype %>"
 RSINSTALLMODE="<%= @rsinstallmode %>"
@@ -117,14 +117,14 @@ RSINSTALLMODE="<%= @rsinstallmode %>"
 
 <% if !@issvcaccount.empty? %>
 ; Information for Integration Services
-ISSVCACCOUNT="<%= `powershell write-host $env:userdomain -nonewline` %>\<%= @issvcaccount %>"
+ISSVCACCOUNT="<%= @issvcaccount %>"
 ISSVCPASSWORD="<%= @ispwd %>"
 ISSVCSTARTUPTYPE="<%= @issvcstartuptype %>"
 <% end %>
 
 <% if !@assvcaccount.empty? %>
 ; Information for analysis services.
-ASSVCACCOUNT="<%= `powershell write-host $env:userdomain -nonewline` %>\<%= @assvcaccount %>"
+ASSVCACCOUNT="<%= @assvcaccount %>"
 ASSVCPASSWORD="<%= @aspwd %>"
 ASSVCSTARTUPTYPE="<%= @assvcstartuptype %>"
 

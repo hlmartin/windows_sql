@@ -44,7 +44,7 @@ if($action -eq 'Install'){   ##install
         
     echo IACCEPTSQLSERVERLICENSETERMS='"<%= @iacceptsqlserverlicenseterms %>"' >> $file;
 
-    if( "<%= @sqlsysadminaccounts %>" -ne "" ){ echo SQLSYSADMINACCOUNTS="""$env:userdomain\<%= @sqlsysadminaccounts %>""" >> $file; }
+    if( "<%= @sqlsysadminaccounts %>" -ne "" ){ echo SQLSYSADMINACCOUNTS="""<%= @sqlsysadminaccounts %>""" >> $file; }
     
     if( "<%= @securitymode %>" -match 'SQL'){
         echo SECURITYMODE='"<%= @securitymode.upcase %>"' >> $file;
@@ -71,28 +71,28 @@ if($action -eq 'Install'){   ##install
     }
 
     if( "<%= @agtsvcaccount %>" -ne ""){
-        echo AGTSVCACCOUNT="""$env:userdomain\<%= @agtsvcaccount %>""" >> $file;
+        echo AGTSVCACCOUNT="""$userdomain<%= @agtsvcaccount %>""" >> $file;
         echo AGTSVCPASSWORD="""$agtpwd""" >> $file;
         echo AGTSVCSTARTUPTYPE='"<%= @agtsvcstartuptype %>"' >> $file;
     }
     if("<%= @sqlsvcaccount %>" -ne ""){
-        echo SQLSVCACCOUNT="""$env:userdomain\<%= @sqlsvcaccount %>""" >> $file;
+        echo SQLSVCACCOUNT="""<%= @sqlsvcaccount %>""" >> $file;
         echo SQLSVCPASSWORD="""$sqlpwd""" >> $file;
         echo SQLSVCSTARTUPTYPE='"<%= @sqlsvcstartuptype %>"' >> $file;
     }    
     if("<%= @rssvcaccount %>" -ne ""){
-        echo RSSVCACCOUNT="""$env:userdomain\<%= @rssvcaccount %>""" >> $file;
+        echo RSSVCACCOUNT="""<%= @rssvcaccount %>""" >> $file;
         echo RSSVCPASSWORD="""$rspwd""" >> $file;
         echo RSSVCSTARTUPTYPE='"<%= @rssvcstartuptype %>"' >> $file;
         echo RSINSTALLMODE='"<%= @rsinstallmode %>"' >> $file;
     }
     if("<%= @issvcaccount %>" -ne ""){
-        echo ISSVCACCOUNT="""$env:userdomain\<%= @issvcaccount %>""" >> $file;
+        echo ISSVCACCOUNT="""<%= @issvcaccount %>""" >> $file;
         echo ISSVCPASSWORD="""$ispwd""" >> $file;
         echo ISSVCSTARTUPTYPE='"<%= @issvcstartuptype %>"' >> $file;
     }
     if("<%= @assvcaccount %>" -ne ""){
-        echo ASSVCACCOUNT="""$env:userdomain\<%= @assvcaccount %>""" >> $file;
+        echo ASSVCACCOUNT="""<%= @assvcaccount %>""" >> $file;
         echo ASSVCPASSWORD="""$aspwd""" >> $file;
         echo ASSVCSTARTUPTYPE='"<%= @assvcstartuptype %>"' >> $file;
         if("<%= @asdatadir %>" -ne ""){

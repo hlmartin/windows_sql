@@ -24,8 +24,6 @@ If you create your service account with [windows_ad module](https://forge.puppet
 else you can provide manually your password.
 All password manually provided have priority on xml password.
 
-The user domain doesn't need to be provided, it will be supplied by the $env:userdomain powershell variable for each service account variable (like AGTSVCACCOUNT) and SQLSYSADMINACCOUNTS
-
 ## Setup Requirements
 Depends on the following modules:
  - ['puppetlabs/powershell', '>=1.0.2'](https://forge.puppetlabs.com/puppetlabs/powershell),
