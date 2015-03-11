@@ -42,7 +42,7 @@ class windows_sql (
   # Instance
   $instancename                   = 'MSSQLSERVER',
   $instanceid                     = '',
-  $instancedir                    = '',
+  $instancedir                    = 'C:/Program Files/Microsoft SQL Server/',
 
   $features                       = '',
   
@@ -188,6 +188,7 @@ class windows_sql (
     configurationfile => $configurationfile,
     action            => $action,
     forcerestart      => $forcerestart,
+    instancedir       => $instancedir,
   }
 
   if(!empty($isopath)){

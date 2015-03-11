@@ -24,7 +24,6 @@
     "manifests/install.pp": "cf63a4ef0961d63f9a331188117fe002",
     "manifests/params.pp": "6181c5a01ad5b80cc12160cf65395a64",
     "spec/spec_helper.rb": "09ccbe4bbe4503df6281e6ec7977973d",
-    "templates/checkifinstall.erb": "779d1ac328f1f585a6647f0f04448444",
     "templates/config.erb": "83f4d9c96e9dc621a9e0623b68cef059",
     "templates/configps.erb": "cc6b52bd9221ea749edc033c65bfe8f2",
     "templates/install.erb": "aebaa846a63ac0ef7a3f27e5f72b59a0",

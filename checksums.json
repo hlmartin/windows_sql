@@ -19,7 +19,6 @@
   "templates/DatabaseIntegrityCheck.sql.erb": "3919de46180872b22252158477643b13",
   "templates/DeleteBackupHistory.sql.erb": "6d2bf652f44f4199ac26348d9f8b1e5e",
   "templates/IndexOptimize.sql.erb": "75a71ea584fdee426eefd041161d789b",
-  "templates/checkifinstall.erb": "0a8d78514c80d0e28d6457bf1125df23",
   "templates/config.erb": "8ad251b2618aab152c14313164924162",
   "templates/configps.erb": "3270d826a59c2194ce27e6ecdb656db5",
   "templates/install.erb": "aebaa846a63ac0ef7a3f27e5f72b59a0",

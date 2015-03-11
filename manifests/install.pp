@@ -25,33 +25,27 @@ class windows_sql::install(
   $configurationfile = $configurationfile,
   $action            = $action,
   $forcerestart      = $forcerestart,
+  $instancedir       = $instancedir,
 ){
   validate_bool($forcerestart)
-  if(!empty($sqlpath)){
+  if (!empty($sqlpath)){
     $path = $sqlpath
-    file{'C:\checkifinstall.ps1':
-      content => template('windows_sql/checkifinstall.erb'),
-    }
     exec{"${action} SQL":
       command  => "setup.exe /CONFIGURATIONFILE='${configurationfile}';",
       cwd      => "$sqlpath",
       path     => "$sqlpath",
       provider => 'powershell',
-      onlyif   => 'C:\\checkifinstall.ps1',
+      creates  => "$instancedir",
       timeout  => 0,
     }
-  }elsif(!empty($isopath) and !empty(xmlpath)){
-    file{'C:\checkifinstall.ps1':
-      content => template('windows_sql/checkifinstall.erb'),
-      require  => Windows_isos['SQLServer'],
-    }
+  } elsif (!empty($isopath) and !empty(xmlpath)) {
     exec{"${action} SQL":
       command  => "\$letter = \$null;if(test-path '${xmlpath}'){[xml]\$xml = New-Object system.Xml.XmlDocument;[xml]\$xml = Get-Content '${xmlpath}';foreach(\$iso in \$xml.configuration.isos.iso){if(\$iso.ImagePath -eq '${isopath}'){\$letter = \$iso.DriveLetter;}}if(\$letter -ne \$null){Push-Location;cd \$letter':';.\\setup.exe /CONFIGURATIONFILE='${configurationfile}';Pop-Location;}}{exit 0;}",
       onlyif   => 'C:\\checkifinstall.ps1',
       provider => 'powershell',
       timeout  => 0,
     }
-  }else{
+  } else {
     fail('You need to provide $isopath or $sqlpath')
   }
 }
