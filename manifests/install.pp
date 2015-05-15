@@ -32,7 +32,6 @@ class windows_sql::install(
     package { 'Microsoft SQL Server 2012 (64-bit)':
       ensure          => installed,
       provider        => 'windows',
-      path            => $sqlpath,
       source          => "${sqlpath}/setup.exe",
       install_options => [ "/CONFIGURATIONFILE=${configurationfile}" ]
     }
