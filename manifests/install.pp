@@ -29,11 +29,14 @@ class windows_sql::install(
 ){
   validate_bool($forcerestart)
   if (!empty($sqlpath)){
-    package { 'Microsoft SQL Server 2012 (64-bit)':
-      ensure          => installed,
-      provider        => 'windows',
-      source          => "${sqlpath}/setup.exe",
-      install_options => [ "/CONFIGURATIONFILE=${configurationfile}" ]
+    exec { "${action} SQL":
+      command   => "setup.exe /CONFIGURATIONFILE=${configurationfile}",
+      onlyif    => 'if (gp HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\* | Select DisplayName | Select-String "Microsoft SQL Server 2012 \(64-bit\)") {exit 1}',
+      cwd       => $sqlpath,
+      path      => $sqlpath,
+      provider  => powershell,
+      logoutput => true,
+      timeout   => 0,
     }
   } elsif (!empty($isopath) and !empty(xmlpath)) {
     exec{"${action} SQL":
