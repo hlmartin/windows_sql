@@ -42,7 +42,7 @@ class windows_sql (
   # Instance
   $instancename                   = 'MSSQLSERVER',
   $instanceid                     = '',
-  $instancedir                    = 'C:/Program Files/Microsoft SQL Server/',
+  $instancedir                    = '',
 
   $features                       = '',
   
